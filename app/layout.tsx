@@ -27,7 +27,33 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        <header className="bg-dark-blue text-white p-4 text-center">
+          <nav className="container mx-auto flex justify-between items-center">
+          <div className="text-xl font-bold">LOGO</div>
+          <ul className="flex gap-6">
+            <li><a href="#about" className="hover:underline">About</a></li>
+            <li><a href="#showroom" className="hover:underline">Showroom</a></li>
+            <li><a href="#contact" className="hover:underline">Contact</a></li>
+          </ul>
+          </nav>
+        </header>
         {children}
+        <footer className="flex flex-wrap gap-x-52 bg-dark-blue text-white p-4">
+          <div className="text-xl font-bold">LOGO</div>
+          <div className="flex flex-col items-left">
+            <h2 className="text-lg font-bold underline">Contact</h2>
+            <p>Email: <a href="mailto:email@domain.com" className="hover:underline">email@domain.com</a></p>
+            <p>Phone: 999-999-9999</p>
+          </div>
+          <div className="flex flex-col items-left">
+            <h2 className="text-lg font-bold underline">Address</h2>
+            <p >99 StreetName Ave, CityName, ON, LF2 6P7</p>
+          </div>
+          <div className="flex flex-col items-left">
+            <h2 className="text-lg font-bold underline">Socials</h2>
+            <p>Facebook Icon</p>
+          </div>
+        </footer>
       </body>
     </html>
   );
