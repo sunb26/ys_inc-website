@@ -19,7 +19,7 @@ export const Contact = () => {
                   placeholder="Message"
                   className="w-full p-3 border border-gray-300 rounded text-black h-32"
                 ></textarea>
-                <div className="flex justify-end">
+                <div className="flex pl-4 justify-start md:justify-end">
                   <button
                     type="submit"
                     className="bg-dark-blue text-white px-6 py-3 rounded hover:bg-blue-950"
