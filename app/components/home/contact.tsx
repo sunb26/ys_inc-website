@@ -4,7 +4,7 @@ export function Contact() {
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row gap-32">
             <div>
-              <form className="space-y-4">
+              <form className="space-y-4 w-5/6">
                 <input
                   type="text"
                   placeholder="Name"
