@@ -10,7 +10,7 @@ export default function Home() {
       <Hero />  
       <About />
       <Showroom />
-      <div className="bg-dark-blue text-white p-8 text-center text-3xl font-bold">
+      <div className="bg-dark-blue text-white p-8 text-center text-5xl font-bold underline">
         <h2>Contact Us</h2>
       </div>
       <Contact />
