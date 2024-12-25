@@ -27,7 +27,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header className="bg-dark-blue text-white p-4 text-center fixed top-0 left-0 right-0 z-50">
+        <header className="bg-dark-blue text-white p-4 text-center fixed top-0 left-0 right-0 z-50 border-b-2 border-white">
           <nav className="container mx-auto flex justify-between items-center">
           <div className="text-xl font-bold"><a href="#home">LOGO</a></div>
           <ul className="flex gap-6">
