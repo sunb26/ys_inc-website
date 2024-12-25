@@ -1,4 +1,4 @@
-export const Contact = () => {
+export function Contact() {
   return (
     <section id="contact" className="flex flex-row bg-slate-100 text-white py-12">
         <div className="container mx-auto">
@@ -13,6 +13,11 @@ export const Contact = () => {
                 <input
                   type="email"
                   placeholder="Email"
+                  className="w-full p-3 border border-gray-300 rounded text-black"
+                />
+                <input
+                  type="phone"
+                  placeholder="Phone Number"
                   className="w-full p-3 border border-gray-300 rounded text-black"
                 />
                 <textarea
@@ -31,7 +36,7 @@ export const Contact = () => {
             </div>
             <div className="flex flex-col">
               <h2 className="text-2xl font-bold underline text-black">Contact Info</h2>
-              <h3 className="text-lg font-bold text-black">Email: email@domain.com<a href="mailto:email@domain.com" className="hover:underline"></a></h3>
+              <h3 className="text-lg font-bold text-black">Email: <a href="mailto:email@domain.com" className="hover:underline">email@domain.com</a></h3>
               <h3 className="text-lg font-bold text-black">Phone: 999-999-9999</h3>
             </div>
           </div>
