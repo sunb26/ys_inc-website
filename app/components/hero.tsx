@@ -1,16 +1,14 @@
 /**
- * TODO: Fill in Header text when finalized.
- * 
  * Gets hero section of homepage
  * @returns Hero image component
  */
 
 export function Hero() {
   return (
-    <section id="home" className="relative grid grid-rows-3 grid-cols-3 h-[85vh] w-full bg-cover bg-center bg-hero-pattern bg-opacity-10 md:bg-cover bg-[length:100%_100%]">
+    <section id="home" className="relative grid grid-rows-3 grid-cols-3 h-[85vh] w-full bg-cover bg-center bg-mobile-hero-pattern md:bg-full-hero-pattern bg-opacity-10 md:bg-cover bg-[length:100%_100%]">
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <div className="flex justify-center col-start-1 col-end-3 row-start-2 row-end-3 pl-32">
-        <h1 className="text-white text-4xl md:text-9xl font-bold z-40"> 
+        <h1 className="text-white text-7xl md:text-9xl font-bold z-40"> 
           Yachting Solutions Inc.
         </h1>
       </div>

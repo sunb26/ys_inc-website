@@ -9,7 +9,8 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-        'hero-pattern': "url('/hero.png')",
+        'full-hero-pattern': "url('/full-hero.png')",
+        'mobile-hero-pattern': "url('/mobile-hero.png')",
       },
       colors: {
         background: "var(--background)",
