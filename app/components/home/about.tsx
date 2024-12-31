@@ -8,8 +8,19 @@ export function About() {
         <div className="w-full md:w-1/2 pr-10">
           <h2 className="text-5xl text-white font-bold pl-10 pt-10 underline">About</h2>
           <p className="text-white pl-10 pt-10 text-lg">
-            Duis a est non diam porttitor lobortis. Integer ullamcorper justo lorem, sed vehicula
-            sem venenatis eu. Donec neque quam, fringilla vel facilisis eget, rhoncus ut augue.
+            Yachting Solutions Inc. primarily specializes in the purchasing and selling of late models Chris Craft sport boats and other high end sport boats in the 20 to 32 foot range.
+            Our services include refurbishing of older Chris Craft sport boats, and we offer a wide range of services, including but not limited to fiberglass reparis, mechanical services, bright work,
+             electrical troubleshooting, upholstery, canvas and structural repairs.
+            <br />
+            <br />
+            We are located in the Niagara region of Ontario which has a long tradition of fiberglass boat manufacturing, starting in the mid 50s. The owner/principal of Yachting Solutions Inc has been involved
+            in the yachting business for over 35 years and has manufactured over 200 yachts in the 55 to 75 foot range.
+            <br />
+            <br />
+            Owner,
+            <br />
+            <br />
+            Jan Willem de Jong
           </p>
         </div>
       </div>
