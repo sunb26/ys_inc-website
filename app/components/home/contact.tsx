@@ -36,8 +36,8 @@ export function Contact() {
             </div>
             <div className="flex flex-col">
               <h2 className="text-2xl font-bold underline text-black">Contact Info</h2>
-              <h3 className="text-lg font-bold text-black">Email: <a href="mailto:email@domain.com" className="hover:underline">email@domain.com</a></h3>
-              <h3 className="text-lg font-bold text-black">Phone: 999-999-9999</h3>
+              <h3 className="text-lg font-bold text-black "><a href="mailto:sales@yachtingsolutionsinc.com" className="hover:underline">sales@yachtingsolutionsinc.com</a></h3>
+              <h3 className="text-lg font-bold text-black pt-5">289-241-8164</h3>
             </div>
           </div>
         </div> 
