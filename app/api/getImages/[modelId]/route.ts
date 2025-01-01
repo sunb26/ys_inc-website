@@ -26,7 +26,11 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ mod
   const res = await drive.files.list({
     q: `'${folderId}' in parents and trashed=false and (mimeType='image/jpeg' or mimeType='image/png')`,
     fields: "files(id, name, mimeType)",
+    pageSize: 25,
   });
+  if (!res.data.files) {
+    return NextResponse.json({ status: 404, body: "No Images Found" });
+  }
 
   console.log(res.data.files);
 
