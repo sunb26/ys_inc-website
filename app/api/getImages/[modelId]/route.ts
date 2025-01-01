@@ -23,11 +23,12 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ mod
 
   const auth = await google.auth.getClient({ scopes: ["https://www.googleapis.com/auth/drive"] });
   const drive = google.drive({ version: "v3", auth });
-
   const res = await drive.files.list({
-    q: `'${folderId}' in parents and trashed = false and mimeType = 'image/jpeg' or mimeType = 'image/png'`,
+    q: `'${folderId}' in parents and trashed=false and (mimeType='image/jpeg' or mimeType='image/png')`,
     fields: "files(id, name, mimeType)",
   });
+
+  console.log(res.data.files);
 
   return NextResponse.json({ status: 200, body: res.data.files as ImageFile[] });
 }
