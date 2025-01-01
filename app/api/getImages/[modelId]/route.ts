@@ -13,7 +13,7 @@ type ImageFile = {
   mimeType: "image/jpeg" | "image/png";
 }
 
-export async function GET(req: NextRequest, { params }: { params: Promise<{ modelId: string }> }) {
+export async function GET(_req: NextRequest, { params }: { params: Promise<{ modelId: string }> }) {
   const { modelId } = await params;
   const folderId = imageFolderIds.get(modelId);
 
