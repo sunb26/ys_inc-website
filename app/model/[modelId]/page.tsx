@@ -12,48 +12,18 @@ interface GalleryImage {
 
 export default async function BoatModelPage({ params }: { params: { modelId: string } }) {
   const { modelId } = await params;
-  const images: GalleryImage[] = [
-    {
-      url: '/about.png',
-      alt: 'Landscape photo',
-      caption: 'Beautiful sunset'
-    },
-    {
-      url: '/about.png',
-      alt: 'Landscape photo',
-      caption: 'Hi'
-    },
-    {
-      url: '/about.png',
-      alt: 'Landscape photo',
-      caption: 'Beautiful sunset'
-    },
-    {
-      url: '/about.png',
-      alt: 'Landscape photo',
-      caption: 'Beautiful sunset'
-    },
-    {
-      url: '/about.png',
-      alt: 'Landscape photo',
-      caption: 'Beautiful sunset'
-    },
-    {
-      url: '/about.png',
-      alt: 'Landscape photo',
-      caption: 'Beautiful sunset'
-    },
-    {
-      url: '/about.png',
-      alt: 'Landscape photo',
-      caption: 'Beautiful sunset'
-    },
-    {
-      url: '/about.png',
-      alt: 'Landscape photo',
-      caption: 'Beautiful sunset'
-    },
-  ];
+    
+  const url = `${process.env.NEXT_DEV_BASE_URL}/api/getImages/${ modelId }`
+  console.log(url)
+  // Fetch the images for the model from the API
+  const res = await fetch(url);
+
+
+  const data = await res.json();
+  const images: GalleryImage[] = data.body.map((image: { id: string; name: string; mimeType: string; }) => ({
+    url: `https://drive.google.com/uc?export=view&id=${image.id}`,
+    alt: image.name,
+  }));
 
   return (
     <div className="bg-slate-100">
