@@ -31,7 +31,6 @@ export function Contact() {
           setPhone('');
           setMessage('');
         } else {
-          console.log(res);
           alert('Something went wrong, please try again later.');
         }
       })
