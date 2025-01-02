@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export function About({ name="COMING SOON", imagePath="/about.png", desc="COMING SOON" }: { name: string, imagePath: string, desc: string }) {
+export function About({ name="COMING SOON", imagePath="/placeholder.png", desc="COMING SOON" }: { name: string, imagePath: string, desc: string }) {
   return (
     <section id="about" className="bg-slate-100 h-fit px-8 pt-16 md:h-[75vh]">
       <div className="flex flex-col md:flex-row w-full h-full pt-8">
