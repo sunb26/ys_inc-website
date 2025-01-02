@@ -14,10 +14,11 @@ type ImageFile = {
 };
 
 export async function GET(
-  _req: NextRequest,
+  req: NextRequest,
   { params }: { params: Promise<{ modelId: string }> }
 ) {
   const { modelId } = await params;
+  const pageSize = Number(req.nextUrl.searchParams.get("pageSize")) || 0;
   const folderId = imageFolderIds.get(modelId);
 
   if (!folderId) {
@@ -34,7 +35,7 @@ export async function GET(
   const res = await drive.files.list({
     q: `'${folderId}' in parents and trashed=false and (mimeType='image/jpeg' or mimeType='image/png')`,
     fields: "files(id, name, mimeType)",
-    pageSize: 25,
+    pageSize: pageSize,
   });
   if (!res.data.files) {
     return NextResponse.json({ status: 404, body: "No Images Found" });
