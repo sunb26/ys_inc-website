@@ -11,17 +11,25 @@ type ImageFile = {
   id: string;
   name: string;
   mimeType: "image/jpeg" | "image/png";
-}
+};
 
-export async function GET(_req: NextRequest, { params }: { params: Promise<{ modelId: string }> }) {
+export async function GET(
+  _req: NextRequest,
+  { params }: { params: Promise<{ modelId: string }> }
+) {
   const { modelId } = await params;
   const folderId = imageFolderIds.get(modelId);
 
   if (!folderId) {
-    return NextResponse.json({ status: 404, body: "Model Folder Id Not Found" });
+    return NextResponse.json({
+      status: 404,
+      body: "Model Folder Id Not Found",
+    });
   }
 
-  const auth = await google.auth.getClient({ scopes: ["https://www.googleapis.com/auth/drive"] });
+  const auth = await google.auth.getClient({
+    scopes: ["https://www.googleapis.com/auth/drive.readonly"],
+  });
   const drive = google.drive({ version: "v3", auth });
   const res = await drive.files.list({
     q: `'${folderId}' in parents and trashed=false and (mimeType='image/jpeg' or mimeType='image/png')`,
@@ -34,5 +42,8 @@ export async function GET(_req: NextRequest, { params }: { params: Promise<{ mod
 
   console.log(res.data.files);
 
-  return NextResponse.json({ status: 200, body: res.data.files as ImageFile[] });
+  return NextResponse.json({
+    status: 200,
+    body: res.data.files as ImageFile[],
+  });
 }
