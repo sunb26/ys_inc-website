@@ -40,9 +40,7 @@ export async function GET(
   if (!res.data.files) {
     return NextResponse.json({ status: 404, body: "No Images Found" });
   }
-
   console.log(res.data.files);
-
   return NextResponse.json({
     status: 200,
     body: res.data.files as ImageFile[],
