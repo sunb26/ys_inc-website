@@ -11,7 +11,7 @@ export function Contact() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    fetch(`/api/send`, {
+    fetch(`${process.env.NEXT_DEV_BASE_URL}/api/send`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',

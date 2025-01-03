@@ -1,7 +1,7 @@
-import { About } from "../../components/model/about";
-import { ImageGallery } from "../../components/model/gallery";
-import { Highlights } from "../../components/model/highlights";
-import { Specifications } from "@/app/components/model/specifications";
+import { About } from "@/components/model/about";
+import { ImageGallery } from "@/components/model/gallery";
+import { Highlights } from "@/components/model/highlights";
+import { Specifications } from "@/components/model/specifications";
 
 // Define the structure for a single image item
 interface GalleryImage {
@@ -31,8 +31,6 @@ export default async function BoatModelPage({
   url = `${process.env.NEXT_DEV_BASE_URL}/api/getModel/${modelId}`;
   const infoRes = await fetch(url);
   const modelData = await infoRes.json();
-
-
 
   return (
     <div className="bg-slate-100">

@@ -1,38 +1,61 @@
+// app/components/home/showroom.tsx
 import Link from "next/link";
 import Image from "next/image";
 
-export async function Showroom() {
+interface ModelData {
+  body: {
+    name: string;
+    description: string;
+    enabled: "TRUE" | "FALSE";
+  }
+}
+
+interface ImageData {
+  body: Array<{
+    id: string;
+  }>;
+}
+
+async function getShowroomData() {
   const ids = [1, 2, 3];
 
-  // Fetch all models in parallel
-  const modelPromises = ids.map(async (id) => {
-    const infoRes = await fetch(
-      `${process.env.NEXT_DEV_BASE_URL}/api/getModel/${id}`
-    );
-    if (!infoRes.ok) {
-      throw new Error(
-        `showroom: error fetching model ${id}: ${infoRes.statusText}`
+  try {
+    const modelPromises = ids.map(async (id) => {
+      const infoRes = await fetch(
+        `${process.env.NEXT_DEV_BASE_URL}/api/getModel/${id}`
       );
-    }
-    const data = await infoRes.json();
+      if (!infoRes.ok) {
+        throw new Error(
+          `showroom: error fetching model ${id}: ${infoRes.statusText}`
+        );
+      }
+      const data: ModelData = await infoRes.json();
 
-    const imgRes = await fetch(
-      `${process.env.NEXT_DEV_BASE_URL}/api/listImages/${id}?pageSize=1`
-    );
-    if (!imgRes.ok) {
-      throw new Error(
-        `showroom: error fetching images for model ${id}: ${imgRes.statusText}`
+      const imgRes = await fetch(
+        `${process.env.NEXT_DEV_BASE_URL}/api/listImages/${id}?pageSize=1`
       );
-    }
-    const images = await imgRes.json();
-    if (!images.body || images.body.length === 0) {
-      throw new Error(`showroom: no images found for model ${id}`);
-    }
-    const coverImgSrc = `https://drive.google.com/uc?export=view&id=${images.body[0].id}`;
-    return { id, data, coverImgSrc };
-  });
+      if (!imgRes.ok) {
+        throw new Error(
+          `showroom: error fetching images for model ${id}: ${imgRes.statusText}`
+        );
+      }
+      const images: ImageData = await imgRes.json();
+      if (!images.body || images.body.length === 0) {
+        throw new Error(`showroom: no images found for model ${id}`);
+      }
+      const coverImgSrc = `https://drive.google.com/uc?export=view&id=${images.body[0].id}`;
+      return { id, data, coverImgSrc };
+    });
 
-  const models = await Promise.all(modelPromises);
+    return await Promise.all(modelPromises);
+  } catch (error) {
+    console.error('Error fetching showroom data:', error);
+    throw error;
+  }
+}
+
+export async function Showroom() {
+  const models = await getShowroomData();
 
   return (
     <section id="showroom" className="py-16 bg-slate-100 pt-3">

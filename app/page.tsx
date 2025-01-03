@@ -1,7 +1,7 @@
-import { Hero } from "./components/home/hero"
-import { About } from "./components/home/about"
-import { Showroom } from "./components/home/showroom"
-import { Contact } from "./components/home/contact"
+import { Hero } from "@/components/home/hero"
+import { About } from "@/components/home/about"
+import { Showroom } from "@/components/home/showroom"
+import { Contact } from "@/components/home/contact"
 import './globals.css'
 
 export default function Home() {
