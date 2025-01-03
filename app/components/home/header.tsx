@@ -1,13 +1,14 @@
-'use client';
+"use client";
 
-import { useRouter, usePathname } from 'next/navigation';
+import { useRouter, usePathname } from "next/navigation";
+import Image from "next/image";
 
 export function Header() {
   const router = useRouter();
   const pathName = usePathname();
 
   const handleNavigation = (sectionId: string) => {
-    if (pathName === '/') {
+    if (pathName === "/") {
       // Scroll to the section with the section ID
       document.location.href = `${sectionId}`;
     } else {
@@ -17,15 +18,45 @@ export function Header() {
   };
 
   return (
-    <header className="bg-dark-blue text-white p-4 text-center fixed top-0 left-0 right-0 z-50 border-b-2 border-white">
-            <nav className="container mx-auto flex justify-between items-center">
-            <div className="text-xl font-bold cursor-pointer"><a onClick={() => handleNavigation('#home')}>LOGO</a></div>
-            <ul className="flex gap-6">
-              <li><a className="hover:underline cursor-pointer" onClick={() => handleNavigation('#about')}>About</a></li>
-              <li><a className="hover:underline cursor-pointer" onClick={() => handleNavigation('#showroom')}>Showroom</a></li>
-              <li><a className="hover:underline cursor-pointer" onClick={() => handleNavigation('#contact')}>Contact Us</a></li>
-            </ul>
-            </nav>
-          </header>
+    <header className="bg-slate-300 text-white p-4 text-center fixed top-0 left-0 right-0 z-50 border-b-2 border-white">
+      <nav className="container mx-auto flex justify-between items-center">
+        <div className="font-bold cursor-pointer">
+          <a onClick={() => handleNavigation("#home")}>
+            <Image
+              src="/logo.png"
+              alt="Yachting Solutions Inc. Logo"
+              width={100}
+              height={100}
+            />
+          </a>
+        </div>
+        <ul className="flex gap-6">
+          <li>
+            <a
+              className="hover:underline cursor-pointer text-dark-blue"
+              onClick={() => handleNavigation("#about")}
+            >
+              About
+            </a>
+          </li>
+          <li>
+            <a
+              className="hover:underline cursor-pointer text-dark-blue"
+              onClick={() => handleNavigation("#showroom")}
+            >
+              Showroom
+            </a>
+          </li>
+          <li>
+            <a
+              className="hover:underline cursor-pointer text-dark-blue"
+              onClick={() => handleNavigation("#contact")}
+            >
+              Contact Us
+            </a>
+          </li>
+        </ul>
+      </nav>
+    </header>
   );
-};
+}
