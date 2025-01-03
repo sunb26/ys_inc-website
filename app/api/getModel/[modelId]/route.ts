@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export async function GET(
   _req: NextRequest,
-  { params }: { params: { modelId: number } }
+  { params }: { params: Promise<{ modelId: string }> }
 ) {
   try {
     const { modelId } = await params;
@@ -14,7 +14,7 @@ export async function GET(
   
     // Force conversion to number to ensure proper addition
     const mid = Number(modelId);
-    if (isNaN(modelId)) {
+    if (isNaN(mid)) {
       return new Response("Invalid model ID", { status: 400 });
     }
 
