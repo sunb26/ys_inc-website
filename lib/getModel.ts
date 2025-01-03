@@ -1,21 +1,16 @@
 import { google } from "googleapis";
-import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(
-  _req: NextRequest,
-  { params }: { params: Promise<{ modelId: string }> }
-) {
+export async function fetchModelData(modelId: string) {
   try {
-    const { modelId } = await params;
     const auth = await google.auth.getClient({
       scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     });
     const sheets = google.sheets({ version: "v4", auth });
-  
+
     // Force conversion to number to ensure proper addition
     const mid = Number(modelId);
     if (isNaN(mid)) {
-      return new Response("Invalid model ID", { status: 400 });
+      throw new Error("fetchModelData: Invalid model ID");
     }
 
     const range = `Sheet1!A${mid + 1}:E${mid + 1}`;
@@ -26,17 +21,16 @@ export async function GET(
     });
 
     if (!response.data.values) {
-      return NextResponse.json({ status: 404, body: "model data not found" });
+      throw new Error("fetchModelData: Model data not found");
     }
 
     const [name, description, highlights, specifications, enabled] =
       response.data.values[0];
-    
-    return NextResponse.json({
-      status: 200,
-      body: { name, description, highlights, specifications, enabled },
-    });
+
+    return { name, description, highlights, specifications, enabled };
   } catch (error) {
-    return NextResponse.json({ status: 500, body: error });
+    // Log the error (optional) for debugging purposes
+    console.error("fetchModelData: Error fetching model data:", error);
+    throw error;
   }
 }
