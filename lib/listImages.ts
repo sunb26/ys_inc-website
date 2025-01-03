@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import { googleCredentials } from "./utils";
 
 const imageFolderIds = new Map<string, string>([
   ["1", process.env.MODEL_1_IMAGE_FOLDER_ID!],
@@ -21,6 +22,7 @@ export async function listImages(modelId: string, pageSize: number) {
     }
 
     const auth = await google.auth.getClient({
+      credentials: googleCredentials,
       scopes: ["https://www.googleapis.com/auth/drive.readonly"],
     });
     const drive = google.drive({ version: "v3", auth });

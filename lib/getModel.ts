@@ -1,8 +1,10 @@
 import { google } from "googleapis";
+import { googleCredentials } from "./utils";
 
 export async function fetchModelData(modelId: string) {
   try {
     const auth = await google.auth.getClient({
+      credentials: googleCredentials,
       scopes: ["https://www.googleapis.com/auth/spreadsheets.readonly"],
     });
     const sheets = google.sheets({ version: "v4", auth });
