@@ -12,7 +12,7 @@ interface GalleryImage {
 export default async function BoatModelPage({
   params,
 }: {
-  params: { modelId: string };
+  params: Promise<{ modelId: string }>;
 }) {
   const { modelId } = await params;
 
