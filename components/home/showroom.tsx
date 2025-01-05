@@ -17,7 +17,7 @@ const POSTS_QUERY = `*[
   "coverImgSrc": coverImage.asset->url
 }`;
 
-const options = { next: { revalidate: 30 } };
+const options = { next: { revalidate: 60 } };
 
 export async function Showroom() {
   const models = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
@@ -41,10 +41,9 @@ export async function Showroom() {
                     src={model.coverImgSrc}
                     alt="Boat Model Cover Image"
                     className="rounded-lg mb-4 border-2 border-dark-blue max-h-[40vh]"
-                    width={500}
-                    height={500}
+                    width={300}
+                    height={300}
                     priority={true}
-                    loading="eager"
                   />
                   <h3 className="text-lg font-semibold text-black">
                     {model.title}
