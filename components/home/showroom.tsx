@@ -12,7 +12,7 @@ const POSTS_QUERY = `*[
   _id, 
   title, 
   enabled, 
-  references, 
+  "ref": gallerySetRef->slug.current, 
   description,
   "coverImgSrc": coverImage.asset->url
 }`;
@@ -33,7 +33,7 @@ export async function Showroom() {
             return (
               <Link
                 key={model._id}
-                href={model.enabled ? `/${model.references.current}` : `#showroom`}
+                href={model.enabled ? `/model/${model.ref}` : `#showroom`}
                 className="cursor-pointer"
               >
                 <div className="bg-white shadow-md rounded-lg p-10 transition-transform transform hover:scale-105">
@@ -43,6 +43,8 @@ export async function Showroom() {
                     className="rounded-lg mb-4 border-2 border-dark-blue max-h-[40vh]"
                     width={500}
                     height={500}
+                    priority={true}
+                    loading="eager"
                   />
                   <h3 className="text-lg font-semibold text-black">
                     {model.title}
