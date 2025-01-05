@@ -19,9 +19,7 @@ export default async function ModelPage({
   params: { slug: string };
 }) {
   params = await params;
-  console.log("Params:", params);
   const modelData = await client.fetch<SanityDocument>(POST_QUERY, params, options);
-  console.log("modelData", modelData);
   return (
     <div className="bg-slate-100">
       <About
