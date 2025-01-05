@@ -109,8 +109,7 @@ export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
               className="object-cover"
               sizes="(max-width: 640px) 33vw, (max-width: 1024px) 20vw, 16vw"
               priority={true}
-              loading="eager"
-              quality={75}
+              quality={50}
             />
           </div>
         ))}
@@ -144,15 +143,13 @@ export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-
+            {/* Use regular img tag for this to prioritize loading speed */}
             <div className="relative aspect-[16/9] w-full">
-              <Image
+              {/* eslint-disable-next-line @next/next/no-img-element */}
+              <img
                 src={imageUrls[currentIndex]}
                 alt={`Image ${currentIndex + 1}`}
-                fill
-                className="object-contain"
-                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 70vw"
-                priority
+                className="object-contain w-[85vh] h-[85vh] mx-auto"
               />
             </div>
 
