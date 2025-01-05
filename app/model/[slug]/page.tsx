@@ -11,15 +11,17 @@ const POST_QUERY = `*[_type == "galleryImageSet" && slug.current == $slug][0]{ "
   "coverImg": coverImage.asset->url,
 }}`;
 
+type Params = Promise<{ slug: string }>;
+
 const options = { next: { revalidate: 30 } };
 
 export default async function ModelPage({
   params,
 }: {
-  params: { slug: string };
+  params: Params;
 }) {
-  params = await params;
-  const modelData = await client.fetch<SanityDocument>(POST_QUERY, params, options);
+  const p = await params;
+  const modelData = await client.fetch<SanityDocument>(POST_QUERY, p, options);
   return (
     <div className="bg-slate-100">
       <About
