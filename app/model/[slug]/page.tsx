@@ -15,11 +15,7 @@ type Params = Promise<{ slug: string }>;
 
 const options = { next: { revalidate: 30 } };
 
-export default async function ModelPage({
-  params,
-}: {
-  params: Params;
-}) {
+export default async function ModelPage({ params }: { params: Params }) {
   const p = await params;
   const modelData = await client.fetch<SanityDocument>(POST_QUERY, p, options);
   return (

@@ -1,8 +1,6 @@
-'use client';
-import React, { useState, useCallback, useEffect } from 'react';
-import Image from 'next/image';
-
-
+"use client";
+import React, { useState, useCallback, useEffect } from "react";
+import Image from "next/image";
 
 // Exterior - Interior - Details
 export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
@@ -17,7 +15,9 @@ export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
 
   // Navigate to the previous image
   const showPrevImage = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + imageUrls.length) % imageUrls.length);
+    setCurrentIndex(
+      (prevIndex) => (prevIndex - 1 + imageUrls.length) % imageUrls.length
+    );
   }, [imageUrls.length]);
 
   // Handle keyboard navigation
@@ -26,42 +26,42 @@ export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
       if (!isModalOpen) return;
 
       switch (event.key) {
-        case 'ArrowRight':
+        case "ArrowRight":
           showNextImage();
           break;
-        case 'ArrowLeft':
+        case "ArrowLeft":
           showPrevImage();
           break;
-        case 'Escape':
+        case "Escape":
           closeModal();
           break;
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
-    return () => window.removeEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
   }, [isModalOpen, showNextImage, showPrevImage]);
 
   const openModal = (index: number): void => {
     setCurrentIndex(index);
     setIsModalOpen(true);
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
   };
 
   const closeModal = (): void => {
     setIsModalOpen(false);
-    document.body.style.overflow = 'unset';
+    document.body.style.overflow = "unset";
   };
 
   // Navigation button component for DRY code
-  const NavigationButton = ({ 
-    onClick, 
-    direction, 
-    label 
-  }: { 
-    onClick: () => void, 
-    direction: 'prev' | 'next', 
-    label: string 
+  const NavigationButton = ({
+    onClick,
+    direction,
+    label,
+  }: {
+    onClick: () => void;
+    direction: "prev" | "next";
+    label: string;
   }) => (
     <button
       onClick={(e) => {
@@ -69,7 +69,7 @@ export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
         onClick();
       }}
       className={`absolute top-1/2 -translate-y-1/2 ${
-        direction === 'prev' ? 'left-4' : 'right-4'
+        direction === "prev" ? "left-4" : "right-4"
       } bg-black bg-opacity-50 hover:bg-opacity-75 text-white w-12 h-12 rounded-full flex items-center justify-center transition-all`}
       aria-label={label}
     >
@@ -84,7 +84,7 @@ export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        {direction === 'prev' ? (
+        {direction === "prev" ? (
           <polyline points="15 18 9 12 15 6" />
         ) : (
           <polyline points="9 18 15 12 9 6" />
@@ -117,13 +117,13 @@ export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
       </div>
 
       {isModalOpen && (
-        <div 
+        <div
           className="fixed inset-0 bg-black bg-opacity-75 z-50 flex items-center justify-center p-4"
           onClick={closeModal}
         >
-          <div 
+          <div
             className="relative w-full max-w-4xl mx-auto"
-            onClick={e => e.stopPropagation()}
+            onClick={(e) => e.stopPropagation()}
           >
             <button
               onClick={closeModal}
@@ -144,7 +144,7 @@ export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
                 <line x1="6" y1="6" x2="18" y2="18" />
               </svg>
             </button>
-            
+
             <div className="relative aspect-[16/9] w-full">
               <Image
                 src={imageUrls[currentIndex]}
