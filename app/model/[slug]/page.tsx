@@ -13,18 +13,20 @@ const POST_QUERY = `*[_type == "galleryImageSet" && slug.current == $slug][0]{ "
 
 type Params = Promise<{ slug: string }>;
 
-const options = { next: { revalidate: 30 } };
+const options = { next: { revalidate: 60 } };
 
 export default async function ModelPage({ params }: { params: Params }) {
   const p = await params;
   const modelData = await client.fetch<SanityDocument>(POST_QUERY, p, options);
   return (
     <div className="bg-slate-100">
-      <About
-        name={modelData.showroomImageRef.title}
-        imagePath={modelData.showroomImageRef.coverImg}
-        desc={modelData.showroomImageRef.description}
-      />
+      <div className="p-2 w-fit h-fit">
+        <About
+          name={modelData.showroomImageRef.title}
+          imagePath={modelData.showroomImageRef.coverImg}
+          desc={modelData.showroomImageRef.description}
+        />
+      </div>
       <div>
         <h1 className="text-center text-6xl font-bold my-8 underline text-dark-blue">
           Gallery

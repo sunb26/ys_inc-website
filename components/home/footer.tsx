@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export function Footer() {
   return (
-    <footer className="flex flex-wrap space-x-44 bg-slate-300 text-dark-blue p-4">
-      <div className="size-fit pl-24">
+    <footer className="flex flex-col gap-4 md:flex-row flex-wrap md:space-x-44 bg-slate-300 text-dark-blue p-4">
+      <div className="size-fit md:pl-24">
         <Image
           src="/logo.png"
           alt="Yachting Solutions Inc. Logo"

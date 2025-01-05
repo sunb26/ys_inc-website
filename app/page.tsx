@@ -6,7 +6,7 @@ import "./globals.css";
 
 export default function Home() {
   return (
-    <div>
+    <div className="flex flex-col">
       <Hero />
       <About />
       <Showroom />
