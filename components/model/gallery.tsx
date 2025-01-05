@@ -2,31 +2,23 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import Image from 'next/image';
 
-interface GalleryImage {
-  url: string;
-  alt: string;
-  caption?: string;
-}
 
-interface ImageGalleryProps {
-  images: GalleryImage[];
-}
 
 // Exterior - Interior - Details
-export function ImageGallery({ images: images }: ImageGalleryProps) {
+export function ImageGallery({ imageUrls }: { imageUrls: string[] }) {
   // Track both the selected image and its index
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
 
   // Navigate to the next image
   const showNextImage = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
-  }, [images.length]);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % imageUrls.length);
+  }, [imageUrls.length]);
 
   // Navigate to the previous image
   const showPrevImage = useCallback(() => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + images.length) % images.length);
-  }, [images.length]);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + imageUrls.length) % imageUrls.length);
+  }, [imageUrls.length]);
 
   // Handle keyboard navigation
   useEffect(() => {
@@ -104,18 +96,21 @@ export function ImageGallery({ images: images }: ImageGalleryProps) {
   return (
     <div className="container mx-auto px-4">
       <div className="grid grid-cols-3 lg:grid-cols-5 gap-4">
-        {images.map((image: GalleryImage, index: number) => (
+        {imageUrls.map((src: string, index: number) => (
           <div
             key={index}
             className="relative aspect-square overflow-hidden rounded-lg cursor-pointer hover:opacity-90 transition-opacity"
             onClick={() => openModal(index)}
           >
             <Image
-              src={image.url}
-              alt={image.alt}
+              src={src}
+              alt={`Image ${index + 1}`}
               fill
               className="object-cover"
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+              sizes="(max-width: 640px) 33vw, (max-width: 1024px) 20vw, 16vw"
+              priority={true}
+              loading="eager"
+              quality={75}
             />
           </div>
         ))}
@@ -152,11 +147,11 @@ export function ImageGallery({ images: images }: ImageGalleryProps) {
             
             <div className="relative aspect-[16/9] w-full">
               <Image
-                src={images[currentIndex].url}
-                alt={images[currentIndex].alt}
+                src={imageUrls[currentIndex]}
+                alt={`Image ${currentIndex + 1}`}
                 fill
                 className="object-contain"
-                sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 80vw, 70vw"
                 priority
               />
             </div>
@@ -172,19 +167,12 @@ export function ImageGallery({ images: images }: ImageGalleryProps) {
               direction="next"
               label="Next image"
             />
-            
-            {images[currentIndex].caption && (
-              <p className="text-white text-center mt-4">
-                {images[currentIndex].caption}
-              </p>
-            )}
-
             <div className="absolute -bottom-12 left-0 right-0 text-white text-center">
-              {currentIndex + 1} / {images.length}
+              {currentIndex + 1} / {imageUrls.length}
             </div>
           </div>
         </div>
       )}
     </div>
   );
-};
+}
