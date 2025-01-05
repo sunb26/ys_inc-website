@@ -40,9 +40,9 @@ export async function Showroom() {
                   <Image
                     src={model.coverImgSrc}
                     alt="Boat Model Cover Image"
-                    className="rounded-lg mb-4 border-2 border-dark-blue max-h-[40vh]"
-                    width={300}
-                    height={300}
+                    className="rounded-lg mb-4 border-2 border-dark-blue md:max-h-[40vh]"
+                    width={500}
+                    height={500}
                     priority={true}
                   />
                   <h3 className="text-lg font-semibold text-black">
