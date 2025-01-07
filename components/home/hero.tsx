@@ -8,7 +8,7 @@ export function Hero() {
     <section id="home" className="relative h-[85vh] w-full bg-cover bg-center bg-mobile-hero-pattern md:bg-full-hero-pattern bg-opacity-10 md:bg-cover bg-[length:100%_100%]">
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
       <div className="flex pt-32 pl-8 md:pl-32">
-        <h1 className="text-white text-7xl md:text-9xl font-bold z-40"> 
+        <h1 className="text-white text-6xl md:text-[7rem] font-bold z-40"> 
           Yachting Solutions Inc.
         </h1>
       </div>
