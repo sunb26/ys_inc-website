@@ -33,7 +33,6 @@ export function Footer() {
         </p>
       </div>
       <div className="flex flex-col items-left">
-        <h2 className="text-lg font-bold underline">Socials</h2>
       </div>
     </footer>
   );
