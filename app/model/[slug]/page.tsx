@@ -9,6 +9,8 @@ const POST_QUERY = `*[_type == "galleryImageSet" && slug.current == $slug][0]{ "
   title,
   description,
   "coverImg": coverImage.asset->url,
+  highlights,
+  specifications,
 }}`;
 
 type Params = Promise<{ slug: string }>;
@@ -35,8 +37,8 @@ export default async function ModelPage({ params }: { params: Params }) {
           <ImageGallery imageUrls={modelData.imgUrls} />
         </div>
       </div>
-      <Highlights highlights={[]} />
-      <Specifications specs={[]} />
+      <Highlights highlights={modelData.showroomImageRef.highlights} />
+      <Specifications specs={modelData.showroomImageRef.specifications} />
     </div>
   );
 }
