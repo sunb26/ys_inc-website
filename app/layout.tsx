@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   description:
     "Yachting Solutions Inc. specializes in selling fully refurbished, late-model Chris Craft sport boats and other high-end sport boats in the 20-32 ft range. Located in the Niagara region of Ontario, we bring over 35 years of expertise in the yachting industry to every vessel we restore. From fiberglass repairs and mechanical services to brightwork and upholstery, our team ensures each boat is returned to pristine condition before sale. With a legacy rooted in Niagara’s rich fiberglass boat manufacturing history, Yachting Solutions Inc. is your trusted source for quality sport boats. Explore our inventory today!",
   keywords:
-    "Chris Craft sport boats, refurbished sport boats, high-end sport boats, 20-32 ft boats for sale, Niagara boat sales, Ontario luxury boats, fiberglass boat restoration",
+    "yachting, yachting solutions, yachting solutions inc, Chris Craft sport boats, refurbished sport boats, high-end sport boats, 20-32 ft boats for sale, Niagara boat sales, Ontario luxury boats",
 };
 
 export default function RootLayout({
