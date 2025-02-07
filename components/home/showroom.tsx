@@ -28,7 +28,7 @@ export async function Showroom() {
         Showroom
       </h2>
       <div className="text-center bg-slate-100">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:px-28">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:px-28 ">
           {models.map((model) => {
             return (
               <Link
@@ -48,7 +48,7 @@ export async function Showroom() {
                   <h3 className="text-lg font-semibold text-black">
                     {model.title}
                   </h3>
-                  <p className="text-gray-600 text-left">
+                  <p className="text-gray-600 text-left max-h-80 overflow-hidden text-ellipsis text-pretty line-clamp-6">
                     {model.description || ""}
                   </p>
                 </div>
