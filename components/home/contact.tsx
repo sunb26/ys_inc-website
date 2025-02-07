@@ -40,7 +40,7 @@ export function Contact() {
   }
 
   return (
-    <section id="contact" className="flex flex-row bg-slate-100 text-white py-12">
+    <section id="contact" className="flex flex-row bg-slate-100 text-white py-12 px-8">
         <div className="container mx-auto">
           <div className="flex flex-col md:flex-row gap-32">
             <div>
