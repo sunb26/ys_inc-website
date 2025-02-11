@@ -9,7 +9,7 @@ export function About() {
           <h2 className="text-5xl text-white font-bold pl-10 underline">About</h2>
           <p className="text-white pl-10 pt-6 text-lg">
             Yachting Solutions Inc. primarily specializes in the purchasing and selling of late models Chris Craft sport boats and other high end sport boats in the 20 to 32 foot range.
-            Our services include refurbishing of older Chris Craft sport boats, and we offer a wide range of services, including but not limited to fiberglass reparis, mechanical services, bright work,
+            Our services include refurbishing of older Chris Craft sport boats, and we offer a wide range of services, including but not limited to fiberglass repairs, mechanical services, bright work,
              electrical troubleshooting, upholstery, canvas and structural repairs.
             <br />
             <br />
