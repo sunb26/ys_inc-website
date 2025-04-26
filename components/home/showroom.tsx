@@ -28,7 +28,7 @@ export async function Showroom() {
         Showroom
       </h2>
       <div className="text-center bg-slate-100">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:px-28 ">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:px-28">
           {models.map((model) => {
             return (
               <Link
@@ -36,11 +36,11 @@ export async function Showroom() {
                 href={model.enabled ? `/model/${model.ref}` : `#showroom`}
                 className="cursor-pointer"
               >
-                <div className="bg-white shadow-md rounded-lg p-10 transition-transform transform hover:scale-105">
+                <div className="justify-items-center bg-white shadow-md rounded-lg p-10 transition-transform transform hover:scale-105">
                   <Image
                     src={model.coverImgSrc}
                     alt="Boat Model Cover Image"
-                    className="rounded-lg mb-4 border-2 border-dark-blue md:max-h-[40vh]"
+                    className="rounded-lg mb-4 border-2 border-dark-blue md:max-h-[30vh]"
                     width={500}
                     height={500}
                     priority={true}
